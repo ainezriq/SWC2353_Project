@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase History</title>
+    <link rel="stylesheet" href="antheas.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="menu-panel" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger Menu Icon -->
+        
+        <!-- Logo in the center-top -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="C:/images/antheaLogo3.png" alt="Anthea Logo">
+            </a>
+        </div>
+        <div class="cart" onclick="toggleCart()">&#128722;<span id="cartCount">0</span></div> <!-- Cart Icon -->
+    </header>
+	<!-- Expanded Menu (Initially Hidden) -->
+    <div id="sideMenu" class="side-menu" style="display: none;">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <div class="menu-content">
+            <div class="menu-item">
+                <p>Bags &gt;</p>
+                <ul>
+                    <li><a href="handbags.html">Handbags</a></li>
+                    <li><a href="totebags.html">Tote Bags</a></li>
+                    <li><a href="backpack.html">Backpacks</a></li>
+                </ul>
+            </div>
+            <div class="menu-item">
+                <p>Accessories &gt;</p>
+                <ul>
+                    <li><a href="jewelry.html">Jewelry</a></li>
+                    <li><a href="scarves.html">Modal Scarves</a></li>
+                    <li><a href="watches.html">Watches</a></li>
+                </ul>
+            </div>
+            <!-- User Account Section in Side Menu -->
+<div class="menu-item" id="userMenuItem" style="display: none;">
+    <p>User Account &gt;</p>
+    <ul>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+    </ul>
+</div>
+
+<div class="menu-item" id="userMenuOptions" style="display: none;">
+    <p>User Account &gt;</p>
+    <ul>
+        <li><a href="purchase-history.html">Purchase History</a></li>
+        <li><a href="javascript:void(0)" onclick="signOut()">Sign Out</a></li>
+    </ul>
+</div>
+
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <main>
+        <h1>Purchase History</h1>
+        <div id="purchaseHistory"></div> <!-- Container for purchase history -->
+    </main>
+
+    
+    <!-- Footer Section -->
+    <footer>
+        <div class="image-box">
+            <a href="about.html">
+                <img src="file:///C|/images/antheaLogo2.png" alt="About Anthea">
+                <p>About Anthea</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="bags.html">
+                <img src="file:///C|/images/handbag1.png" alt="Bags">
+                <p>Bags</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="accessories.html">
+                <img src="file:///C|/images/jewelry1.remini.jpg" alt="Accessories">
+                <p>Accessories</p>
+            </a>
+        </div>
+        <p>Contact Us: <a href="mailto:support@anthea.com">support@anthea.com</a></p>
+        <p>Follow Us:
+            <span>🌐 Facebook</span>
+            <span>🌐 Twitter</span>
+            <span>🌐 Instagram</span>
+        </p>
+    </footer>
+
+    <script>
+		let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function toggleMenu() {
+            const menu = document.getElementById("sideMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        function toggleCart() {
+            window.location.href = "cart.html"; // Navigate to cart page
+        }
+
+        // Display "Purchase History" if user is signed in
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("cartCount").innerText = cart.length;
+
+            if (sessionStorage.getItem('userSignedIn') === 'true') {
+                const userLinks = document.getElementById('userLinks');
+                const purchaseHistoryLink = document.createElement('a');
+                purchaseHistoryLink.href = 'purchase-history.html';
+                purchaseHistoryLink.textContent = 'Purchase History';
+                purchaseHistoryLink.style.marginLeft = '15px'; // Optional styling
+
+                userLinks.appendChild(purchaseHistoryLink);
+            }
+        });
+
+        function addToCart(itemName, price) {
+            cart.push({ name: itemName, price: price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById("cartCount").innerText = cart.length;
+            alert(itemName + " has been added to your cart.");
+        }
+        // Retrieve purchase history from localStorage
+        const purchaseHistory = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
+
+        function displayPurchaseHistory() {
+            const historyContainer = document.getElementById('purchaseHistory');
+            historyContainer.innerHTML = ''; // Clear any existing content
+
+            if (purchaseHistory.length === 0) {
+                historyContainer.innerHTML = '<p>No purchase history found.</p>';
+            } else {
+                purchaseHistory.forEach((order, index) => {
+                    const orderElement = document.createElement('div');
+                    orderElement.className = 'purchase-item';
+                    orderElement.innerHTML = `
+                        <h3>Order ID: ${order.orderId}</h3>
+                        <p><strong>Email:</strong> ${order.email}</p>
+                        <h4>Items:</h4>
+                        <ul>
+                            ${order.items.map(item => `<li>${item.name} - ${item.price}</li>`).join('')}
+                        </ul>
+                        <p><strong>Total Price:</strong> ${order.total}</p>
+                        <hr>
+                    `;
+                    historyContainer.appendChild(orderElement);
+                });
+            }
+        }
+		
+		// Display "Purchase History" and "Sign Out" if the user is signed in
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("cartCount").innerText = cart.length;
+
+    if (sessionStorage.getItem('userSignedIn') === 'true') {
+        // Hide the Sign In/Sign Up menu and show the user options
+        document.getElementById('userMenuItem').style.display = 'none';
+        document.getElementById('userMenuOptions').style.display = 'block';
+    } else {
+        // Show Sign In/Sign Up options and hide user menu options
+        document.getElementById('userMenuItem').style.display = 'block';
+        document.getElementById('userMenuOptions').style.display = 'none';
+    }
+});
+
+
+        function signOut() {
+            sessionStorage.removeItem('userSignedIn'); // Remove the sign-in session
+            window.location.reload(); // Reload the page to reflect changes
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            displayPurchaseHistory();
+            // Optional: Update cart count in the header
+            document.getElementById("cartCount").innerText = (JSON.parse(localStorage.getItem('cart')) || []).length;
+        });
+    </script>
+</body>
+</html>

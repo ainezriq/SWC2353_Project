@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews</title>
+    <link rel="stylesheet" href="antheas.css">
+</head>
+
+<body>
+<!-- Header Section -->
+    <header>
+        <div class="menu-panel" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger Menu Icon -->
+        
+        <!-- Logo in the center-top -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="C:/images/antheaLogo3.png" alt="Anthea Logo">
+            </a>
+        </div>
+        
+        <div class="cart" onclick="toggleCart()">&#128722;<span id="cartCount">0</span></div> <!-- Cart Icon -->
+        <a href="cart.html" class="cart-link" style="display: none;"></a> <!-- Invisible link to cart -->
+    </header>
+
+    <!-- Expanded Menu (Initially Hidden) -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <div class="menu-content">
+            <div class="menu-item">
+                <p>Bags &gt;</p>
+                <ul>
+                    <li><a href="handbags.html" onclick="displayProducts('handbags')">Handbags</a></li>
+                    <li><a href="totebags.html" onclick="displayProducts('tote_bags')">Tote Bags</a></li>
+                    <li><a href="backpack.html" onclick="displayProducts('backpacks')">Backpacks</a></li>
+                </ul>
+            </div>
+            <div class="menu-item">
+                <p>Accessories &gt;</p>
+                <ul>
+                    <li><a href="jewelry.html" onclick="displayProducts('jewelry')">Jewelry</a></li>
+                    <li><a href="scarves.html" onclick="displayProducts('scarves')">Modal Scarves</a></li>
+                    <li><a href="watches.html" onclick="displayProducts('watches')">Watches</a></li>
+                </ul>
+            </div>
+            <!-- User Account Section -->
+            <div class="menu-item">
+                <p>User Account &gt;</p>
+                <ul>
+                    <li><a href="signin.html" onclick="showSignIn()">Sign In</a></li>
+                    <li><a href="signup.html" onclick="showSignUp()">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+	
+<main>
+
+<h1>Customer Reviews</h1><br>
+	
+<a href="about.html">Back to About</a><br>
+
+<!-- Customer Reviews Section -->
+<section class="customer-reviews">
+    <h2>What Our Customers Are Saying</h2>
+
+    <div class="review">
+        <div class="reviewer-photo">
+            <img src="file:///C|/images/customer1.png" alt="Customer Photo" style="width:100px; height:100px;">
+        </div>
+        <div class="review-content">
+            <h3>Dania Irdina</h3>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <p>"Absolutely love the quality and design! The bag I ordered exceeded my expectations."</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <div class="reviewer-photo">
+            <img src="file:///C|/images/customer2.png" alt="Customer Photo" style="width:100px; height:100px;">
+        </div>
+        <div class="review-content">
+            <h3>Sarah Aliya</h3>
+            <p class="rating">⭐⭐⭐⭐</p>
+            <p>"Great material of hijab!! Will definitely shop for a modal here again!"</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <div class="reviewer-photo">
+            <img src="file:///C|/images/customer3.png" alt="Customer Photo" style="width:100px; height:100px;">
+        </div>
+        <div class="review-content">
+            <h3>Linda Khai</h3>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <p>"The jewelry pieces are beautiful and well-made. Highly recommended!"</p>
+        </div>
+    </div>
+</section>
+	</main>
+
+<!-- Footer Section -->
+<footer>
+    <div class="image-box">
+        <a href="about.html">
+            <img src="file:///C|/images/antheaLogo2.png" alt="About Anthea">
+            <p>About Anthea</p>
+        </a>
+    </div>
+    <div class="image-box">
+        <a href="bags.html">
+            <img src="file:///C|/images/handbag1.png" alt="Bags">
+            <p>Bags</p>
+        </a>
+    </div>
+    <div class="image-box">
+        <a href="accessories.html">
+            <img src="file:///C|/images/jewelry1.remini.jpg" alt="Accessories">
+            <p>Accessories</p>
+        </a>
+    </div>
+    <p>Contact Us: <a href="mailto:support@anthea.com">support@anthea.com</a></p>
+    <p>Follow Us:
+        <span>🌐 Facebook</span>
+        <span>🌐 Twitter</span>
+        <span>🌐 Instagram</span>
+    </p>
+</footer>
+
+<!-- JavaScript for Menu and Cart -->
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function toggleMenu() {
+        const menu = document.getElementById("sideMenu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleCart() {
+        window.location.href = "cart.html"; // Navigate to cart page
+    }
+
+    function showProductDetails(name, price, material, description, imageSrc) {
+        const productDisplay = document.getElementById('productDisplay');
+        productDisplay.innerHTML = `
+            <div class="product-details">
+                <img src="${imageSrc}" alt="${name}" class="product-image">
+                <h1>${name}</h1>
+                <p><strong>Price:</strong> ${price}</p>
+                <p><strong>Material:</strong> ${material}</p>
+                <p><strong>Description:</strong> ${description}</p>
+                <button onclick="addToCart('${name}', '${price}')">Add to Cart</button>
+                <button onclick="window.location.href='backpack.html'">Back to Products</button>
+            </div>
+        `;
+    }
+
+    function addToCart(itemName, price) {
+        cart.push({ name: itemName, price: price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById("cartCount").innerText = cart.length;
+        alert(itemName + " has been added to your cart.");
+    }
+
+    // Update cart count on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("cartCount").innerText = cart.length;
+    });
+</script>
+
+</body>
+</html>

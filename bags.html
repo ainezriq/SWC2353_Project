@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bags</title>
+	<link rel="stylesheet" href="antheas.css">
+</head>
+	
+<body>
+	<header>
+    <div class="menu-panel" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger Menu Icon -->
+    <div class="logo">
+        <a href="index.html">
+            <img src="file:///C|/images/antheaLogo3.png" alt="Anthea Logo">
+        </a>
+    </div>
+    <div class="cart" onclick="toggleCart()">&#128722;<span id="cartCount">0</span></div>
+    <a href="cart.html" class="cart-link" style="display: none;"></a> <!-- Invisible link to cart -->
+</header>
+
+<div id="sideMenu" class="side-menu">
+    <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+    <div class="menu-content">
+        <div class="menu-item">
+            <p>Bags &gt;</p>
+            <ul>
+                <li><a href="handbags.html">Handbags</a></li>
+                <li><a href="totebags.html">Tote Bags</a></li>
+                <li><a href="backpack.html">Backpacks</a></li>
+            </ul>
+        </div>
+        <div class="menu-item">
+            <p>Accessories &gt;</p>
+            <ul>
+                <li><a href="jewelry.html">Jewelry</a></li>
+                <li><a href="scarves.html">Scarves</a></li>
+                <li><a href="watches.html">Watches</a></li>
+            </ul>
+        </div>
+        <div class="menu-item">
+            <p>User Account &gt;</p>
+            <ul>
+                <li><a href="signin.html" onclick="showSignIn()">Sign In</a></li>
+                <li><a href="signup.html" onclick="showSignUp()">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <h1>Bags</h1><br>
+    <nav>
+        <ul>
+            <li><a href="handbags.html">Our Handbags</a></li><br>
+            <li><a href="totebags.html">Our Tote Bags</a></li><br>
+            <li><a href="backpack.html">Our Backpack</a></li><br>
+        </ul>
+    </nav>
+    <a href="products.html">Back to Products</a><br>
+	
+	<!-- Footer Section -->
+    <footer>
+        <div class="image-box">
+            <a href="about.html">
+                <img src="file:///C|/images/antheaLogo2.png" alt="About Anthea">
+                <p>About Anthea</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="bags.html">
+                <img src="file:///C|/images/handbag1.png" alt="Bags">
+                <p>Bags</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="accessories.html">
+                <img src="file:///C|/images/jewelry1.remini.jpg" alt="Accessories">
+                <p>Accessories</p>
+            </a>
+        </div>
+        <p>Contact Us: <a href="mailto:support@anthea.com">support@anthea.com</a></p>
+        <p>Follow Us:
+            <span>🌐 Facebook</span>
+            <span>🌐 Twitter</span>
+            <span>🌐 Instagram</span>
+        </p>
+    </footer>
+
+    <!-- JavaScript for Menu and Cart -->
+    <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function toggleMenu() {
+        const menu = document.getElementById("sideMenu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleCart() {
+        window.location.href = "cart.html"; // Navigate to cart page
+    }
+
+    function showProductDetails(name, price, material, description, imageSrc) {
+        const productDisplay = document.getElementById('productDisplay');
+        productDisplay.innerHTML = `
+            <div class="product-details">
+                <img src="${imageSrc}" alt="${name}" class="product-image">
+                <h1>${name}</h1>
+                <p><strong>Price:</strong> ${price}</p>
+                <p><strong>Material:</strong> ${material}</p>
+                <p><strong>Description:</strong> ${description}</p>
+                <button onclick="addToCart('${name}', '${price}')">Add to Cart</button>
+                <button onclick="window.location.href='backpack.html'">Back to Products</button>
+            </div>
+        `;
+    }
+
+    function addToCart(itemName, price) {
+        cart.push({ name: itemName, price: price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById("cartCount").innerText = cart.length;
+        alert(itemName + " has been added to your cart.");
+    }
+
+    // Update cart count on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("cartCount").innerText = cart.length;
+    });
+</script>
+
+</body>
+</html>

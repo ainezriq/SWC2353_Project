@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our History</title>
+    <link rel="stylesheet" href="antheas.css">
+</head>
+	
+<body>
+	<!-- Header Section -->
+    <header>
+        <div class="menu-panel" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger Menu Icon -->
+        
+        <!-- Logo in the center-top -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="C:/images/antheaLogo3.png" alt="Anthea Logo">
+            </a>
+        </div>
+        
+        <div class="cart" onclick="toggleCart()">&#128722;<span id="cartCount">0</span></div> <!-- Cart Icon -->
+        <a href="cart.html" class="cart-link" style="display: none;"></a> <!-- Invisible link to cart -->
+    </header>
+
+    <!-- Expanded Menu (Initially Hidden) -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <div class="menu-content">
+            <div class="menu-item">
+                <p>Bags &gt;</p>
+                <ul>
+                    <li><a href="handbags.html" onclick="displayProducts('handbags')">Handbags</a></li>
+                    <li><a href="totebags.html" onclick="displayProducts('tote_bags')">Tote Bags</a></li>
+                    <li><a href="backpack.html" onclick="displayProducts('backpacks')">Backpacks</a></li>
+                </ul>
+            </div>
+            <div class="menu-item">
+                <p>Accessories &gt;</p>
+                <ul>
+                    <li><a href="jewelry.html" onclick="displayProducts('jewelry')">Jewelry</a></li>
+                    <li><a href="scarves.html" onclick="displayProducts('scarves')">Modal Scarves</a></li>
+                    <li><a href="watches.html" onclick="displayProducts('watches')">Watches</a></li>
+                </ul>
+            </div>
+            <!-- User Account Section -->
+            <div class="menu-item">
+                <p>User Account &gt;</p>
+                <ul>
+                    <li><a href="signin.html" onclick="showSignIn()">Sign In</a></li>
+                    <li><a href="signup.html" onclick="showSignUp()">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <h1>Our History</h1>
+        <p>Founded in 2024, Anthea is more than just a brand; it’s a celebration of love, style, and individuality. The name "Anthea" is inspired by a couple whose shared passion for fashion and design blossomed into a vision for a unique brand that embodies elegance and sophistication. This couple believed that accessories are not just functional items, but extensions of one’s personality and expression.</p><br>
+
+        <h2>The Vision</h2>
+        <p>Anthea was created with the vision of offering stylish, high-quality handbags and accessories that resonate with the diverse lifestyles of modern individuals. The founders were determined to craft products that combine timeless design with contemporary flair, ensuring that each piece is versatile enough for both everyday use and special occasions.</p><br>
+
+        <h2>What Makes Anthea Special?</h2>
+        <p>Anthea stands out in the competitive fashion industry for several reasons:</p><br>
+
+        <h3>Quality Craftsmanship</h3>
+        <p>Every product is meticulously crafted using premium materials, ensuring durability and longevity without compromising style. Our artisans pay attention to detail, guaranteeing that each item reflects the brand's commitment to excellence.</p><br>
+
+        <h3>Sustainable Practices</h3>
+        <p>Anthea is dedicated to environmental responsibility. We prioritize sustainable materials and ethical manufacturing processes, making a conscious effort to reduce our carbon footprint while still delivering luxurious products.</p><br>
+
+        <h3>Unique Designs</h3>
+        <p>Our collections feature unique designs that blend classic aesthetics with modern trends. We believe in celebrating individuality, which is why we offer a range of styles that cater to diverse tastes, from minimalist chic to bold statements.</p><br>
+
+        <h3>Community Focus</h3>
+        <p>Anthea is passionate about building a community of empowered individuals. We engage with our customers and encourage them to share their personal style stories, fostering a sense of belonging and connection.</p><br>
+
+        <h3>Innovation</h3>
+        <p>Our brand embraces innovation, continuously evolving with the ever-changing fashion landscape. We regularly introduce new collections that reflect the latest trends while maintaining our signature Anthea aesthetic.</p><br>
+    </main>
+
+    <a href="about.html">Back to About</a><br>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="image-box">
+            <a href="about.html">
+                <img src="file:///C|/images/antheaLogo2.png" alt="About Anthea">
+                <p>About Anthea</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="bags.html">
+                <img src="file:///C|/images/handbag1.png" alt="Bags">
+                <p>Bags</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="accessories.html">
+                <img src="file:///C|/images/jewelry1.remini.jpg" alt="Accessories">
+                <p>Accessories</p>
+            </a>
+        </div>
+        <p>Contact Us: <a href="mailto:support@anthea.com">support@anthea.com</a></p>
+        <p>Follow Us:
+            <span>🌐 Facebook</span>
+            <span>🌐 Twitter</span>
+            <span>🌐 Instagram</span>
+        </p>
+    </footer>
+
+    <!-- JavaScript for Menu and Cart -->
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function toggleMenu() {
+            const menu = document.getElementById("sideMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        function toggleCart() {
+            window.location.href = "cart.html"; // Navigate to cart page
+        }
+
+        function showProductDetails(name, price, material, description, imageSrc) {
+            const productDisplay = document.getElementById('productDisplay');
+            productDisplay.innerHTML = `
+                <div class="product-details">
+                    <img src="${imageSrc}" alt="${name}" class="product-image">
+                    <h1>${name}</h1>
+                    <p><strong>Price:</strong> ${price}</p>
+                    <p><strong>Material:</strong> ${material}</p>
+                    <p><strong>Description:</strong> ${description}</p>
+                    <button onclick="addToCart('${name}', '${price}')">Add to Cart</button>
+                    <button onclick="window.location.href='backpack.html'">Back to Products</button>
+                </div>
+            `;
+        }
+
+        function addToCart(itemName, price) {
+            cart.push({ name: itemName, price: price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById("cartCount").innerText = cart.length;
+            alert(itemName + " has been added to your cart.");
+        }
+
+        // Update cart count on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("cartCount").innerText = cart.length;
+        });
+    </script>
+</body>
+</html>

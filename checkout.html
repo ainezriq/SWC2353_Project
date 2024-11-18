@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="antheas.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="menu-panel" onclick="toggleMenu()">&#9776;</div>
+        <div class="logo">
+            <a href="index.html">
+                <img src="file:///C|/images/antheaLogo3.png" alt="Anthea Logo">
+            </a>
+        </div>
+        <div class="cart" onclick="toggleCart()">&#128722;<span id="cartCount">0</span></div>
+    </header>
+
+    <!-- Checkout Section -->
+    <main>
+        <h1>Checkout</h1>
+        <div id="checkoutItems"></div> <!-- Cart items for checkout will display here -->
+
+        <div class="total-price">
+            <h2>Total Price: <span id="totalPrice">RM 0</span></h2>
+        </div>
+
+        <div class="payment-method">
+            <h3>Select Payment Method:</h3>
+            <label><input type="radio" name="payment" value="Credit Card"> Credit Card</label><br>
+            <label><input type="radio" name="payment" value="PayPal"> PayPal</label><br>
+            <label><input type="radio" name="payment" value="Cash on Delivery"> Cash on Delivery</label>
+        </div>
+
+        <button onclick="completeCheckout()">Complete Checkout</button>
+        <a href="cart.html">Back to Cart</a>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Contact Us: <a href="mailto:support@anthea.com">support@anthea.com</a></p>
+        <p>Follow Us:
+            <span>🌐 Facebook</span>
+            <span>🌐 Twitter</span>
+            <span>🌐 Instagram</span>
+        </p>
+    </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCheckoutItems() {
+            const checkoutItemsContainer = document.getElementById('checkoutItems');
+            checkoutItemsContainer.innerHTML = ''; // Clear existing items
+
+            let total = 0;
+
+            if (cart.length === 0) {
+                checkoutItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'checkout-item';
+                    itemElement.innerHTML = `
+                        <p><strong>Item:</strong> ${item.name}</p>
+                        <p><strong>Price:</strong> ${item.price}</p>
+                    `;
+                    checkoutItemsContainer.appendChild(itemElement);
+
+                    const priceValue = typeof item.price === 'string' && item.price.includes("RM ")
+                        ? parseFloat(item.price.replace("RM ", "").trim())
+                        : parseFloat(item.price);
+
+                    total += priceValue;
+                });
+
+                document.getElementById('totalPrice').innerText = `RM ${total.toFixed(2)}`;
+            }
+        }
+
+        function generateOrderId() {
+            return 'ANT-' + Math.floor(100000 + Math.random() * 900000); // Generates a 6-digit order ID
+        }
+
+        function completeCheckout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty! Please add some items before proceeding to checkout.");
+        return;
+    }
+
+    const email = prompt("Please enter your email address to receive your order confirmation:");
+    if (email) {
+        const orderId = generateOrderId();
+        alert(`Thank you for your purchase! Your order ID is ${orderId}. You will receive a confirmation email at ${email}.`);
+
+        // Prepare purchase entry
+        const purchaseEntry = {
+            orderId: orderId,
+            email: email,
+            items: cart,
+            total: document.getElementById('totalPrice').innerText
+        };
+
+        // Store purchase history in localStorage
+        let purchaseHistory = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
+        purchaseHistory.push(purchaseEntry);
+        localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory));
+
+        // Clear the cart and redirect to the homepage
+        localStorage.removeItem('cart');
+        window.location.href = "index.html";
+    } else {
+        alert("Email is required to complete the checkout.");
+    }
+}
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            displayCheckoutItems();
+            document.getElementById("cartCount").innerText = cart.length;
+        });
+    </script>
+
+</body>
+</html>

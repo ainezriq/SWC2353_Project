@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthea - Jewelry</title>
+    <link rel="stylesheet" href="antheas.css">
+</head>
+<body>
+<!-- Header Section -->
+    <header>
+        <div class="menu-panel" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger Menu Icon -->
+        
+        <!-- Logo in the center-top -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="C:/images/antheaLogo3.png" alt="Anthea Logo">
+            </a>
+        </div>
+        
+        <div class="cart" onclick="toggleCart()">&#128722;<span id="cartCount">0</span></div> <!-- Cart Icon -->
+        <a href="cart.html" class="cart-link" style="display: none;"></a> <!-- Invisible link to cart -->
+    </header>
+
+    <!-- Expanded Menu (Initially Hidden) -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <div class="menu-content">
+            <div class="menu-item">
+                <p>Bags &gt;</p>
+                <ul>
+                    <li><a href="handbags.html" onclick="displayProducts('handbags')">Handbags</a></li>
+                    <li><a href="totebags.html" onclick="displayProducts('tote_bags')">Tote Bags</a></li>
+                    <li><a href="backpack.html" onclick="displayProducts('backpacks')">Backpacks</a></li>
+                </ul>
+            </div>
+            <div class="menu-item">
+                <p>Accessories &gt;</p>
+                <ul>
+                    <li><a href="jewelry.html" onclick="displayProducts('jewelry')">Jewelry</a></li>
+                    <li><a href="scarves.html" onclick="displayProducts('scarves')">Modal Scarves</a></li>
+                    <li><a href="watches.html" onclick="displayProducts('watches')">Watches</a></li>
+                </ul>
+            </div>
+            <!-- User Account Section in Side Menu -->
+<div class="menu-item" id="userMenuItem" style="display: none;">
+    <p>User Account &gt;</p>
+    <ul>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+    </ul>
+</div>
+
+<div class="menu-item" id="userMenuOptions" style="display: none;">
+    <p>User Account &gt;</p>
+    <ul>
+        <li><a href="purchase-history.html">Purchase History</a></li>
+        <li><a href="javascript:void(0)" onclick="signOut()">Sign Out</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+
+
+<!-- main sect-->
+    <main>
+        <div class="product-display" id="productDisplay">
+            <h1>Jewelry Collection</h1>
+            <div class="product-item" onclick="showProductDetails('Serena Bangle', 'RM 80', 'Gold-Plated', 'Timeless and refined, perfect for any occasion.', 'file:///C|/images/jewelry1.remini.jpg')">
+    <img src="file:///C|/images/jewelry1.remini.jpg" alt="Serena Bangle" style="width:250px; height:auto;">
+    <p>Serena Bangle</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Aurelia Bangle', 'RM 90', 'Gold-Plated', 'A statement piece with a contemporary charm.', 'file:///C|/images/jewelry2.remini.png')">
+    <img src="file:///C|/images/jewelry2.remini.png" alt="Aurelia Bangle" style="width:250px; height:auto;">
+    <p>Aurelia Bangle</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Luna Bangle', 'RM 100', 'Gold-Plated', 'Radiant and versatile, ideal for day-to-night style.', 'file:///C|/images/jewelry3.remini.png')">
+    <img src="file:///C|/images/jewelry3.remini.png" alt="Luna Bangle" style="width:250px; height:auto;">
+    <p>Luna Bangle</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Cleo Bracelet', 'RM 80', 'Gold-Plated', 'Sophisticated elegance meets classic design.', 'file:///C|/images/jewelry4.png')">
+    <img src="file:///C|/images/jewelry4.png" alt="Cleo Bracelet" style="width:250px; height:auto;">
+    <p>Cleo Bracelet</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Valora Earrings', 'RM 90', 'Gold-Plated', 'Eye-catching and unique, perfect for making a subtle statement.', 'file:///C|/images/jewelry5.png')">
+    <img src="file:///C|/images/jewelry5.png" alt="Valora Earrings" style="width:250px; height:auto;">
+    <p>Valora Earrings</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Selene Necklace', 'RM 100', 'Gold-Plated', 'Embodying grace and allure, crafted to shine.', 'file:///C|/images/jewelry6.png')">
+    <img src="file:///C|/images/jewelry6.png" alt="Selene Necklace" style="width:250px; height:auto;">
+    <p>Selene Necklace</p>
+</div>
+
+        </div>
+    </main>
+ <!-- Footer Section -->
+    <footer>
+        <div class="image-box">
+            <a href="about.html">
+                <img src="file:///C|/images/antheaLogo2.png" alt="About Anthea">
+                <p>About Anthea</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="bags.html">
+                <img src="file:///C|/images/handbag1.png" alt="Bags">
+                <p>Bags</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="accessories.html">
+                <img src="file:///C|/images/jewelry1.remini.jpg" alt="Accessories">
+                <p>Accessories</p>
+            </a>
+        </div>
+        <p>Contact Us: <a href="mailto:support@anthea.com">support@anthea.com</a></p>
+        <p>Follow Us:
+            <span>🌐 Facebook</span>
+            <span>🌐 Twitter</span>
+            <span>🌐 Instagram</span>
+        </p>
+    </footer>
+
+    <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function toggleMenu() {
+        const menu = document.getElementById("sideMenu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleCart() {
+        window.location.href = "cart.html"; // Navigate to cart page
+    }
+
+    function showProductDetails(name, price, material, description, imageSrc) {
+        const productDisplay = document.getElementById('productDisplay');
+        productDisplay.innerHTML = `
+            <div class="product-details">
+                <img src="${imageSrc}" alt="${name}" class="product-image">
+                <h1>${name}</h1>
+                <p><strong>Price:</strong> ${price}</p>
+                <p><strong>Material:</strong> ${material}</p>
+                <p><strong>Description:</strong> ${description}</p>
+                <button onclick="addToCart('${name}', '${price}')">Add to Cart</button>
+                <button onclick="window.location.href='jewelry.html'">Back to Products</button>
+            </div>
+        `;
+    }
+
+    function addToCart(itemName, price) {
+        cart.push({ name: itemName, price: price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById("cartCount").innerText = cart.length;
+        alert(itemName + " has been added to your cart.");
+    }
+		
+		// Display "Purchase History" and "Sign Out" if the user is signed in
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("cartCount").innerText = cart.length;
+
+    if (sessionStorage.getItem('userSignedIn') === 'true') {
+        // Hide the Sign In/Sign Up menu and show the user options
+        document.getElementById('userMenuItem').style.display = 'none';
+        document.getElementById('userMenuOptions').style.display = 'block';
+    } else {
+        // Show Sign In/Sign Up options and hide user menu options
+        document.getElementById('userMenuItem').style.display = 'block';
+        document.getElementById('userMenuOptions').style.display = 'none';
+    }
+});
+
+
+        function signOut() {
+            sessionStorage.removeItem('userSignedIn'); // Remove the sign-in session
+            window.location.reload(); // Reload the page to reflect changes
+        }
+
+        function addToCart(itemName, price) {
+            cart.push({ name: itemName, price: price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById("cartCount").innerText = cart.length;
+            alert(itemName + " has been added to your cart.");
+        }
+
+    // Update cart count on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("cartCount").innerText = cart.length;
+    });
+</script>
+
+</body>
+</html>

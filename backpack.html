@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthea - Backpacks</title>
+    <link rel="stylesheet" href="antheas.css">
+</head>
+<body>
+    <header>
+    <div class="menu-panel" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger Menu Icon -->
+    
+    <!-- Logo in the center-top -->
+    <div class="logo">
+        <a href="index.html">
+            <img src="file:///C|/images/antheaLogo3.png" alt="Anthea Logo">
+        </a>
+    </div>
+    
+    <div class="cart" onclick="toggleCart()">&#128722;<span id="cartCount">0</span></div> <!-- Cart Icon -->
+    <a href="cart.html" class="cart-link" style="display: none;"></a> <!-- Invisible link to cart -->
+</header>
+
+    <!-- Expanded Menu (Initially Hidden) -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <div class="menu-content">
+            <div class="menu-item">
+                <p>Bags &gt;</p>
+                <ul>
+                    <li><a href="handbags.html">Handbags</a></li>
+                    <li><a href="totebags.html">Tote Bags</a></li>
+                    <li><a href="backpacks.html">Backpacks</a></li>
+                </ul>
+            </div>
+            <div class="menu-item">
+                <p>Accessories &gt;</p>
+                <ul>
+                    <li><a href="jewelry.html">Jewelry</a></li>
+                    <li><a href="scarves.html">Modal Scarves</a></li>
+                    <li><a href="watches.html">Watches</a></li>
+                </ul>
+            </div>
+            <!-- User Account Section in Side Menu -->
+<div class="menu-item" id="userMenuItem" style="display: none;">
+    <p>User Account &gt;</p>
+    <ul>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+    </ul>
+</div>
+
+<div class="menu-item" id="userMenuOptions" style="display: none;">
+    <p>User Account &gt;</p>
+    <ul>
+        <li><a href="purchase-history.html">Purchase History</a></li>
+        <li><a href="javascript:void(0)" onclick="signOut()">Sign Out</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+
+
+    <main>
+        <div class="product-display" id="productDisplay">
+            <h1>Backpacks Collection</h1>
+            <div class="product-item" onclick="showProductDetails('Bella Backpack', 'RM 89', 'PU Leather', 'The Bella Backpack combines lightweight design with sturdy construction, making it ideal for travel and everyday use. Its sleek appearance ensures you travel in style, whether you're commuting or exploring new destinations.', 'file:///C|/images/backpack1.png')">
+    <img src="file:///C|/images/backpack1.png" alt="Bella Backpack" style="width:250px; height:auto;">
+    <p>Bella Backpack</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Luna Backpack', 'RM 79', 'PU Leather', 'Designed for versatility, the Luna Backpack is perfect for school, travel, or casual outings. Its spacious interior and chic exterior make it a go-to choice for both functionality and style.', 'file:///C|/images/backpack2.png')">
+    <img src="file:///C|/images/backpack2.png" alt="Luna Backpack" style="width:250px; height:auto;">
+    <p>Luna Backpack</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Evelyn Backpack', 'RM 80', 'Polyester Fiber', 'The Evelyn Backpack is lightweight yet durable, crafted from high-quality polyester fiber. It's designed to support your on-the-go lifestyle, making it perfect for travel, school, or day trips.', 'file:///C|/images/backpack3.png')">
+    <img src="file:///C|/images/backpack3.png" alt="Evelyn Backpack" style="width:250px; height:auto;">
+    <p>Evelyn Backpack</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Mira Backpack', 'RM 89', 'PU Leather', 'With its modern design, the Mira Backpack is both stylish and practical, ideal for school and travel. Featuring multiple compartments, it keeps your belongings organized while you make a statement.', 'file:///C|/images/backpack4.png')">
+    <img src="file:///C|/images/backpack4.png" alt="Mira Backpack" style="width:250px; height:auto;">
+    <p>Mira Backpack</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Sophie Backpack', 'RM 69', 'Leather and Velvet', 'The Sophie Backpack exudes elegance with its unique blend of leather and velvet. Lightweight yet robust, it’s perfect for travel and special occasions, offering both style and practicality.', 'file:///C|/images/backpack5.png')">
+    <img src="file:///C|/images/backpack5.png" alt="Sophie Backpack" style="width:250px; height:auto;">
+    <p>Sophie Backpack</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Rosie Backpack', 'RM 89', 'PU Leather', 'Meet the Rosie Backpack, a versatile companion for school, travel, or daily errands. Its stylish design and ample space make it a perfect choice for anyone seeking both fashion and function.', 'file:///C|/images/backpack6.png')">
+    <img src="file:///C|/images/backpack6.png" alt="Rosie Backpack" style="width:250px; height:auto;">
+    <p>Rosie Backpack</p>
+</div>
+
+        </div>
+    </main>
+	
+ <!-- Footer Section -->
+    <footer>
+        <div class="image-box">
+            <a href="about.html">
+                <img src="file:///C|/images/antheaLogo2.png" alt="About Anthea">
+                <p>About Anthea</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="bags.html">
+                <img src="file:///C|/images/handbag1.png" alt="Bags">
+                <p>Bags</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="accessories.html">
+                <img src="file:///C|/images/jewelry1.remini.jpg" alt="Accessories">
+                <p>Accessories</p>
+            </a>
+        </div>
+        <p>Contact Us: <a href="mailto:support@anthea.com">support@anthea.com</a></p>
+        <p>Follow Us:
+            <span>🌐 Facebook</span>
+            <span>🌐 Twitter</span>
+            <span>🌐 Instagram</span>
+        </p>
+    </footer>
+
+    <!-- JavaScript for Menu and Cart -->
+    <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function toggleMenu() {
+        const menu = document.getElementById("sideMenu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleCart() {
+        window.location.href = "cart.html"; // Navigate to cart page
+    }
+
+    function showProductDetails(name, price, material, description, imageSrc) {
+        const productDisplay = document.getElementById('productDisplay');
+        productDisplay.innerHTML = `
+            <div class="product-details">
+                <img src="${imageSrc}" alt="${name}" class="product-image">
+                <h1>${name}</h1>
+                <p><strong>Price:</strong> ${price}</p>
+                <p><strong>Material:</strong> ${material}</p>
+                <p><strong>Description:</strong> ${description}</p>
+                <button onclick="addToCart('${name}', '${price}')">Add to Cart</button>
+                <button onclick="window.location.href='backpack.html'">Back to Products</button>
+            </div>
+        `;
+    }
+
+    function addToCart(itemName, price) {
+        cart.push({ name: itemName, price: price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById("cartCount").innerText = cart.length;
+        alert(itemName + " has been added to your cart.");
+    }
+		
+		
+	// Display "Purchase History" and "Sign Out" if the user is signed in
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("cartCount").innerText = cart.length;
+
+    if (sessionStorage.getItem('userSignedIn') === 'true') {
+        // Hide the Sign In/Sign Up menu and show the user options
+        document.getElementById('userMenuItem').style.display = 'none';
+        document.getElementById('userMenuOptions').style.display = 'block';
+    } else {
+        // Show Sign In/Sign Up options and hide user menu options
+        document.getElementById('userMenuItem').style.display = 'block';
+        document.getElementById('userMenuOptions').style.display = 'none';
+    }
+});
+
+
+        function signOut() {
+            sessionStorage.removeItem('userSignedIn'); // Remove the sign-in session
+            window.location.reload(); // Reload the page to reflect changes
+        }
+
+        function addToCart(itemName, price) {
+            cart.push({ name: itemName, price: price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById("cartCount").innerText = cart.length;
+            alert(itemName + " has been added to your cart.");
+        }
+
+    // Update cart count on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("cartCount").innerText = cart.length;
+    });
+</script>
+
+
+</body>
+</html>

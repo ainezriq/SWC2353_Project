@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthea - Watches</title>
+    <link rel="stylesheet" href="antheas.css">
+</head>
+<body>
+   <!-- Header Section -->
+    <header>
+        <div class="menu-panel" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger Menu Icon -->
+        
+        <!-- Logo in the center-top -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="C:/images/antheaLogo3.png" alt="Anthea Logo">
+            </a>
+        </div>
+        
+        <div class="cart" onclick="toggleCart()">&#128722;<span id="cartCount">0</span></div> <!-- Cart Icon -->
+        <a href="cart.html" class="cart-link" style="display: none;"></a> <!-- Invisible link to cart -->
+    </header>
+
+    <!-- Expanded Menu (Initially Hidden) -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <div class="menu-content">
+            <div class="menu-item">
+                <p>Bags &gt;</p>
+                <ul>
+                    <li><a href="handbags.html" onclick="displayProducts('handbags')">Handbags</a></li>
+                    <li><a href="totebags.html" onclick="displayProducts('tote_bags')">Tote Bags</a></li>
+                    <li><a href="backpack.html" onclick="displayProducts('backpacks')">Backpacks</a></li>
+                </ul>
+            </div>
+            <div class="menu-item">
+                <p>Accessories &gt;</p>
+                <ul>
+                    <li><a href="jewelry.html" onclick="displayProducts('jewelry')">Jewelry</a></li>
+                    <li><a href="scarves.html" onclick="displayProducts('scarves')">Modal Scarves</a></li>
+                    <li><a href="watches.html" onclick="displayProducts('watches')">Watches</a></li>
+                </ul>
+            </div>
+            <!-- User Account Section in Side Menu -->
+<div class="menu-item" id="userMenuItem" style="display: none;">
+    <p>User Account &gt;</p>
+    <ul>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+    </ul>
+</div>
+
+<div class="menu-item" id="userMenuOptions" style="display: none;">
+    <p>User Account &gt;</p>
+    <ul>
+        <li><a href="purchase-history.html">Purchase History</a></li>
+        <li><a href="javascript:void(0)" onclick="signOut()">Sign Out</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+
+
+    <main>
+        <div class="product-display" id="productDisplay">
+            <h1>Watches Collection</h1>
+            <div class="product-item" onclick="showProductDetails('Evelyn Grace', 'RM 70', 'Stainless Steel', 'A timeless stainless steel piece with a refined, feminine touch.', 'file:///C|/images/watch1.png')">
+    <img src="file:///C|/images/watch1.png" alt="Evelyn Grace" style="width:250px; height:250px;">
+    <p>Evelyn Grace</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Celeste Aqua', 'RM 75', 'Stainless Steel', 'Ideal for the adventurous, with durability and water resistance.', 'file:///C|/images/watch2.png')">
+    <img src="file:///C|/images/watch2.png" alt="Celeste Aqua" style="width:250px; height:250px;">
+    <p>Celeste Aqua</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Luna Noir', 'RM 80', 'Stainless Steel', 'Understated elegance with a deep, stylish dial to match any outfit.', 'file:///C|/images/watch3.png')">
+    <img src="file:///C|/images/watch3.png" alt="Luna Noir" style="width:250px; height:250px;">
+    <p>Luna Noir</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Belle Charm', 'RM 85', 'Stainless Steel', 'Simple yet sophisticated, crafted for daily elegance and precision.', 'file:///C|/images/watch4.png')">
+    <img src="file:///C|/images/watch4.png" alt="Belle Charm" style="width:250px; height:250px;">
+    <p>Belle Charm</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Sophia Bloom', 'RM 90', 'Gold-Plated', 'Modern bangle a like design with versatile look for any occasion.', 'file:///C|/images/watch5.png')">
+    <img src="file:///C|/images/watch5.png" alt="Sophia Bloom" style="width:250px; height:250px;">
+    <p>Sophia Bloom</p>
+</div>
+<div class="product-item" onclick="showProductDetails('Stella Luxe', 'RM 99', 'Stainless Steel', 'Polished and dependable, a perfect choice for those who value quality.', 'file:///C|/images/watch6.png')">
+    <img src="file:///C|/images/watch6.png" alt="Stella Luxe" style="width:250px; height:250px;">
+    <p>Stella Luxe</p>
+</div>
+
+        </div>
+    </main>
+
+     <!-- Footer Section -->
+    <footer>
+        <div class="image-box">
+            <a href="about.html">
+                <img src="file:///C|/images/antheaLogo2.png" alt="About Anthea">
+                <p>About Anthea</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="bags.html">
+                <img src="file:///C|/images/handbag1.png" alt="Bags">
+                <p>Bags</p>
+            </a>
+        </div>
+        <div class="image-box">
+            <a href="accessories.html">
+                <img src="file:///C|/images/jewelry1.remini.jpg" alt="Accessories">
+                <p>Accessories</p>
+            </a>
+        </div>
+        <p>Contact Us: <a href="mailto:support@anthea.com">support@anthea.com</a></p>
+        <p>Follow Us:
+            <span>🌐 Facebook</span>
+            <span>🌐 Twitter</span>
+            <span>🌐 Instagram</span>
+        </p>
+    </footer>
+
+    <!-- JavaScript for Menu and Cart -->
+    <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function toggleMenu() {
+        const menu = document.getElementById("sideMenu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleCart() {
+        window.location.href = "cart.html"; // Navigate to cart page
+    }
+
+    function showProductDetails(name, price, material, description, imageSrc) {
+        const productDisplay = document.getElementById('productDisplay');
+        productDisplay.innerHTML = `
+            <div class="product-details">
+                <img src="${imageSrc}" alt="${name}" class="product-image">
+                <h1>${name}</h1>
+                <p><strong>Price:</strong> ${price}</p>
+                <p><strong>Material:</strong> ${material}</p>
+                <p><strong>Description:</strong> ${description}</p>
+                <button onclick="addToCart('${name}', '${price}')">Add to Cart</button>
+                <button onclick="window.location.href='watches.html'">Back to Products</button>
+            </div>
+        `;
+    }
+
+    function addToCart(itemName, price) {
+        cart.push({ name: itemName, price: price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById("cartCount").innerText = cart.length;
+        alert(itemName + " has been added to your cart.");
+    }
+
+    // Update cart count on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById("cartCount").innerText = cart.length;
+    });
+		
+		
+		// Display "Purchase History" and "Sign Out" if the user is signed in
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("cartCount").innerText = cart.length;
+
+    if (sessionStorage.getItem('userSignedIn') === 'true') {
+        // Hide the Sign In/Sign Up menu and show the user options
+        document.getElementById('userMenuItem').style.display = 'none';
+        document.getElementById('userMenuOptions').style.display = 'block';
+    } else {
+        // Show Sign In/Sign Up options and hide user menu options
+        document.getElementById('userMenuItem').style.display = 'block';
+        document.getElementById('userMenuOptions').style.display = 'none';
+    }
+});
+
+
+        function signOut() {
+            sessionStorage.removeItem('userSignedIn'); // Remove the sign-in session
+            window.location.reload(); // Reload the page to reflect changes
+        }
+
+        function addToCart(itemName, price) {
+            cart.push({ name: itemName, price: price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById("cartCount").innerText = cart.length;
+            alert(itemName + " has been added to your cart.");
+        }
+</script>
+
+</body>
+</html>
